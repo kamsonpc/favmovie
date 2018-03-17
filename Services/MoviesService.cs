@@ -37,8 +37,6 @@ namespace favmovie.Services
             return _instance;
         }
 
-
-
         public void AddNewMovie(Movie movie)
         {
             _movies.Add(movie);
