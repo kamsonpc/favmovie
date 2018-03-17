@@ -1,0 +1,10 @@
+E:\dotnet_core_projects\favmovie\bin\Debug\netcoreapp2.0\dotnet_core_projects.deps.json
+E:\dotnet_core_projects\favmovie\bin\Debug\netcoreapp2.0\dotnet_core_projects.runtimeconfig.json
+E:\dotnet_core_projects\favmovie\bin\Debug\netcoreapp2.0\dotnet_core_projects.runtimeconfig.dev.json
+E:\dotnet_core_projects\favmovie\bin\Debug\netcoreapp2.0\dotnet_core_projects.dll
+E:\dotnet_core_projects\favmovie\bin\Debug\netcoreapp2.0\dotnet_core_projects.pdb
+E:\dotnet_core_projects\favmovie\obj\Debug\netcoreapp2.0\dotnet_core_projects.csproj.CoreCompileInputs.cache
+E:\dotnet_core_projects\favmovie\obj\Debug\netcoreapp2.0\dotnet_core_projects.AssemblyInfoInputs.cache
+E:\dotnet_core_projects\favmovie\obj\Debug\netcoreapp2.0\dotnet_core_projects.AssemblyInfo.cs
+E:\dotnet_core_projects\favmovie\obj\Debug\netcoreapp2.0\dotnet_core_projects.dll
+E:\dotnet_core_projects\favmovie\obj\Debug\netcoreapp2.0\dotnet_core_projects.pdb
