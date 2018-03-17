@@ -3,26 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using favmovie.Interfaces;
 
-namespace dotnet_core_projects.Controllers
+namespace favmovie.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class MoviesController : Controller
     {
+        private readonly IMoviesService _movieService;
+        public MoviesController(IMoviesService moviesService)
+        {
+            _movieService = moviesService;
+        }
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult GetAll()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_movieService.GetAll());
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{movieId}")]
+        public IActionResult Get(int movieId)
         {
-            return "value";
+            return Ok(_movieService.GetById(movieId));
         }
-
+        
         // POST api/values
         [HttpPost]
         public void Post([FromBody]string value)
