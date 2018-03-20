@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
@@ -12,6 +13,7 @@ namespace favmovie.DbModels
         
         }
         public DbSet<Movie> Movie { get; set; }
+
     }
 
 }

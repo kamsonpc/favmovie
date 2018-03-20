@@ -31,7 +31,7 @@ namespace favmovie
             services.AddAutoMapper();
             services.AddMvc();
             services.AddSingleton<IMoviesService, MoviesService>();
-            services.AddDbContext<DatabaseContex>(options =>  options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext")));
+            services.AddDbContext<DatabaseContex>(options =>  options.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=favmoviesdb;Integrated Security=True;MultipleActiveResultSets=True"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
