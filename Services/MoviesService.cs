@@ -9,54 +9,35 @@ namespace favmovie.Services
     {
         private static MoviesService _instance;
         private List<Movie> _movies;
-
-        public MoviesService()
+        private readonly DatabaseContex _appDbContex;
+        public MoviesService(DatabaseContex appDbContex)
         {
-            _movies = new List<Movie>{
-                new Movie()
-                {
-                  Id = 1,
-                   Title = "Super film",
-                   Year = 1998,
-                 },
-                 new Movie()
-                 {
-                  Id = 2,
-                  Title = "Super film2",
-                  Year = 1998,
-                },
-            };
+            _appDbContex = appDbContex;
         }
 
-        public MoviesService Instance()
-        {
-            if(_instance == null)
-            {
-                _instance = new MoviesService();
-            }
-            return _instance;
-        }
+
 
         public void AddNewMovie(Movie movie)
         {
-            _movies.Add(movie);
+            _appDbContex.Movie.Add(movie);
+            _appDbContex.SaveChanges();
         }
 
         public List<Movie> GetAll()
         {
-            return _movies;
+            return _appDbContex.Movie.ToList();
         }
 
         public Movie GetById(int id)
         {
-           Movie movieFound = _movies.Where(movie => movie.Id == id).SingleOrDefault();
+           Movie movieFound = _appDbContex.Movie.Where(movie => movie.Id == id).SingleOrDefault();
            return movieFound;
         }
 
         public void Remove(int movieId)
         {
            Movie movieToRemove = GetById(movieId);
-           _movies.Remove(movieToRemove);        
+          _appDbContex.Movie.Remove(movieToRemove);        
         }
 
         public bool UpdateMovie(Movie movie)

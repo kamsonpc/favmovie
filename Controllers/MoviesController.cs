@@ -12,6 +12,7 @@ namespace favmovie.Controllers
     public class MoviesController : Controller
     {
         private readonly IMoviesService _movieService;
+
         public MoviesController(IMoviesService moviesService)
         {
             _movieService = moviesService;
