@@ -7,15 +7,12 @@ namespace favmovie.Services
 {
     class MoviesService : IMoviesService
     {
-        private static MoviesService _instance;
-        private List<Movie> _movies;
+
         private readonly DatabaseContex _appDbContex;
         public MoviesService(DatabaseContex appDbContex)
         {
             _appDbContex = appDbContex;
         }
-
-
 
         public void AddNewMovie(Movie movie)
         {
@@ -37,7 +34,8 @@ namespace favmovie.Services
         public void Remove(int movieId)
         {
            Movie movieToRemove = GetById(movieId);
-          _appDbContex.Movie.Remove(movieToRemove);        
+          _appDbContex.Movie.Remove(movieToRemove);   
+          _appDbContex.SaveChanges();     
         }
 
         public bool UpdateMovie(Movie movie)
@@ -45,6 +43,7 @@ namespace favmovie.Services
             Movie movieToUpdate = GetById(movie.Id);
             movieToUpdate.Title = movie.Title;
             movieToUpdate.Year = movieToUpdate.Year;
+            _appDbContex.SaveChanges();
             return true;
         }
     }
