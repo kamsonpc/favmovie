@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using favmovie.Interfaces;
 using favmovie.DbModels;
+using AutoMapper;
+using favmovie.Models;
 
 namespace favmovie.Controllers
 {
@@ -17,37 +19,41 @@ namespace favmovie.Controllers
         {
             _movieService = moviesService;
         }
-        // GET api/values
+        
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_movieService.GetAll());
+            var movies = Mapper.Map<List<MovieResponse>>(_movieService.GetAll());
+            return Ok(movies);
         }
 
-        // GET api/values/5
         [HttpGet("{movieId}")]
         public IActionResult Get(int movieId)
         {
-            return Ok(_movieService.GetById(movieId));
+            return Ok(Mapper.Map<MovieResponse>(_movieService.GetById(movieId)));
         }
         
-        // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody]Movie movie)
+        public IActionResult Post([FromBody]MovieRequest movie)
         {
-            _movieService.AddNewMovie(movie);
+            _movieService.AddNewMovie(Mapper.Map<Movie>(movie));
             return Ok();
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public IActionResult Put([FromBody]Movie movie)
+        [HttpPut("{movieId}")]
+        public IActionResult Put([FromBody]MovieRequest movieRequest,int movieId)
         {
-            _movieService.UpdateMovie(movie);
-            return Ok();
+            var movie = Mapper.Map<Movie>(movieRequest);
+            movie.Id = movieId;
+            if (_movieService.UpdateMovie(movie))
+            {
+                return NoContent();
+            }
+
+            return BadRequest();
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
