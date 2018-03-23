@@ -32,6 +32,7 @@ namespace favmovie
             services.AddAutoMapper();
             services.AddMvc();
             services.AddScoped<IMoviesService, MoviesService>();
+            services.AddScoped<IActorsService, ActorsService>();
             services.AddDbContext<DatabaseContex>(options =>  options.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=favmoviesdb;Integrated Security=True;MultipleActiveResultSets=True"));
             services.AddMvc();
             services.AddSwaggerGen(c =>

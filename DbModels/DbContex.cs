@@ -13,6 +13,7 @@ namespace favmovie.DbModels
         
         }
         public DbSet<Movie> Movie { get; set; }
+        public DbSet<Actor> Actor { get; set; }
 
     }
 
