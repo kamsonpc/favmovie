@@ -11,9 +11,10 @@ using System;
 namespace dotnet_core_projects.Migrations
 {
     [DbContext(typeof(DatabaseContex))]
-    partial class DatabaseContexModelSnapshot : ModelSnapshot
+    [Migration("20180322082800_add property to model movie")]
+    partial class addpropertytomodelmovie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,6 +33,8 @@ namespace dotnet_core_projects.Migrations
                     b.Property<int>("Rate");
 
                     b.Property<string>("Title");
+
+                    b.Property<int>("Year");
 
                     b.HasKey("Id");
 

@@ -42,7 +42,11 @@ namespace favmovie.Services
         {
             Movie movieToUpdate = GetById(movie.Id);
             movieToUpdate.Title = movie.Title;
-            movieToUpdate.Year = movieToUpdate.Year;
+            movieToUpdate.Rate = movie.Rate;            
+            movieToUpdate.Premiere = movie.Premiere;            
+            movieToUpdate.Description = movie.Description; 
+
+
             _appDbContex.SaveChanges();
             return true;
         }
