@@ -12,7 +12,7 @@ namespace favmovie.Services
         {
             _appDbContex = appDbContex;            
         }
-        public void AddNewMovie(Actor actor)
+        public void AddNewActor(Actor actor)
         {
             _appDbContex.Actor.Add(actor);
               _appDbContex.SaveChanges();
@@ -36,13 +36,14 @@ namespace favmovie.Services
            _appDbContex.SaveChanges();
         }
 
-        public bool UpdateMovie(Actor actor)
+        public bool UpdateActor(Actor actor)
         {
             var actorFound =  GetById(actor.Id);
             actorFound.Name = actor.Name;
             actorFound.Surname = actor.Surname;
             actorFound.Age = actor.Age;
             actorFound.Bio = actor.Bio;
+            _appDbContex.SaveChanges();
             return true;
         }
     }

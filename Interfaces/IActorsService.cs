@@ -9,9 +9,9 @@ namespace favmovie.Interfaces
 
         Actor GetById(int id);
 
-        void AddNewMovie(Actor actor);
+        void AddNewActor(Actor actor);
 
-        bool UpdateMovie(Actor actor);
+        bool UpdateActor(Actor actor);
 
         void Remove(int actorId); 
     }
