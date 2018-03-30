@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using favmovie.DbModels;
 using favmovie.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace favmovie.Services
 {
@@ -15,7 +16,7 @@ namespace favmovie.Services
         public void AddNewActor(Actor actor)
         {
             _appDbContex.Actor.Add(actor);
-              _appDbContex.SaveChanges();
+            _appDbContex.SaveChanges();
         }
 
         public List<Actor> GetAll()
@@ -25,7 +26,13 @@ namespace favmovie.Services
 
         public Actor GetById(int id)
         {
-            var actorFound = _appDbContex.Actor.Where(a => a.Id == id).SingleOrDefault();
+            var actorFound = _appDbContex.Actor.Where(a => a.ActorId == id).SingleOrDefault();
+            return actorFound;
+        }
+
+        public List<Movie> GetMovies(int ActorId)
+        {
+            var actorFound = _appDbContex.Movie.ToList();
             return actorFound;
         }
 
@@ -36,9 +43,19 @@ namespace favmovie.Services
            _appDbContex.SaveChanges();
         }
 
+        public void SetActorMovie(int actorId, int movieId)
+        {
+            MovieActor movieActor = new MovieActor();
+            movieActor.ActorId = actorId;
+            movieActor.MovieId = movieId;
+            _appDbContex.MovieActor.Add(movieActor);
+            _appDbContex.SaveChanges();
+
+        }
+
         public bool UpdateActor(Actor actor)
         {
-            var actorFound =  GetById(actor.Id);
+            var actorFound =  GetById(actor.ActorId);
             actorFound.Name = actor.Name;
             actorFound.Surname = actor.Surname;
             actorFound.Age = actor.Age;

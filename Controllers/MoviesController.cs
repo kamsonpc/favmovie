@@ -45,7 +45,7 @@ namespace favmovie.Controllers
         public IActionResult Put([FromBody]MovieRequest movieRequest,int movieId)
         {
             var movie = Mapper.Map<Movie>(movieRequest);
-            movie.Id = movieId;
+            movie.MovieId = movieId;
             if (_movieService.UpdateMovie(movie))
             {
                 return NoContent();

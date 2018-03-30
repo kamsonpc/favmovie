@@ -2,7 +2,7 @@ namespace favmovie.Models
 {
     public class ActorResponse
     {
-        public int Id { get; set; }
+        public int ActorId { get; set; }
         
         public string Name { get; set; }
 

@@ -33,6 +33,21 @@ namespace favmovie.Controllers
             return Ok(Mapper.Map<ActorResponse>(_actorService.GetById(actorId)));
         }
 
+        [HttpPost("{actorId}")]
+        public IActionResult Post([FromBody]int movieId,int actorId)
+        {
+            _actorService.SetActorMovie(actorId,movieId);
+            return Ok();
+        }
+
+        [HttpGet("{actorId}/movies")]
+        public IActionResult GetMovieByActor(int actorId)
+        {
+            
+            var actors = _actorService.GetMovies(actorId);
+            return Ok(actors);
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody]ActorRequest actor)
         {
@@ -44,7 +59,7 @@ namespace favmovie.Controllers
         public IActionResult Put([FromBody]ActorRequest actorRequest,int actorId)
         {
             var actor = Mapper.Map<Actor>(actorRequest);
-            actor.Id = actorId;
+            actor.ActorId = actorId;
             if (_actorService.UpdateActor(actor))
             {
                 return NoContent();

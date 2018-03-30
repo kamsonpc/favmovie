@@ -11,9 +11,10 @@ using System;
 namespace dotnet_core_projects.Migrations
 {
     [DbContext(typeof(DatabaseContex))]
-    partial class DatabaseContexModelSnapshot : ModelSnapshot
+    [Migration("20180327115027_relations v4")]
+    partial class relationsv4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+
 namespace favmovie.DbModels
 {
     public class Actor
     {
-        public int Id { get; set; }
+        public int ActorId { get; set; }
         
         public string Name { get; set; }
 
@@ -11,5 +13,7 @@ namespace favmovie.DbModels
         public string Bio { get; set; }
 
         public int Age { get; set; }
+
+        public ICollection<MovieActor> MovieActor { get; set; }
     }
 }

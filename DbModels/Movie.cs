@@ -5,7 +5,7 @@ namespace favmovie.DbModels
 {
     public class Movie
     {
-        public int Id { get; set; }
+        public int MovieId { get; set; }
 
         public string Title { get; set; }
         
@@ -14,6 +14,10 @@ namespace favmovie.DbModels
         public DateTime Premiere { get; set; }
 
         public string Description { get; set; }
+
+        public ICollection<MovieActor> MovieActor { get; set; }
+
+
 
     }
 }

@@ -27,7 +27,7 @@ namespace favmovie.Services
 
         public Movie GetById(int id)
         {
-           Movie movieFound = _appDbContex.Movie.Where(movie => movie.Id == id).SingleOrDefault();
+           Movie movieFound = _appDbContex.Movie.Where(movie => movie.MovieId == id).SingleOrDefault();
            return movieFound;
         }
 
@@ -40,7 +40,7 @@ namespace favmovie.Services
 
         public bool UpdateMovie(Movie movie)
         {
-            Movie movieToUpdate = GetById(movie.Id);
+            Movie movieToUpdate = GetById(movie.MovieId);
             movieToUpdate.Title = movie.Title;
             movieToUpdate.Rate = movie.Rate;            
             movieToUpdate.Premiere = movie.Premiere;            

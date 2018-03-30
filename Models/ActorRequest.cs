@@ -9,5 +9,6 @@ namespace favmovie.Models
         public string Bio { get; set; }
 
         public int Age { get; set; }
+        
     }
 }

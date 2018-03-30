@@ -11,9 +11,10 @@ using System;
 namespace dotnet_core_projects.Migrations
 {
     [DbContext(typeof(DatabaseContex))]
-    partial class DatabaseContexModelSnapshot : ModelSnapshot
+    [Migration("20180327110855_relationship")]
+    partial class relationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +23,7 @@ namespace dotnet_core_projects.Migrations
 
             modelBuilder.Entity("favmovie.DbModels.Actor", b =>
                 {
-                    b.Property<int>("ActorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Age");
@@ -33,14 +34,14 @@ namespace dotnet_core_projects.Migrations
 
                     b.Property<string>("Surname");
 
-                    b.HasKey("ActorId");
+                    b.HasKey("Id");
 
                     b.ToTable("Actor");
                 });
 
             modelBuilder.Entity("favmovie.DbModels.Movie", b =>
                 {
-                    b.Property<int>("MovieId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
@@ -51,7 +52,7 @@ namespace dotnet_core_projects.Migrations
 
                     b.Property<string>("Title");
 
-                    b.HasKey("MovieId");
+                    b.HasKey("Id");
 
                     b.ToTable("Movie");
                 });
